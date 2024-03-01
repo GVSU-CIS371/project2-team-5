@@ -27,23 +27,37 @@
       <script type="module">
         import { products } from './src/data.ts';
         import { renderProducts, getByCategory, getByRating } from './src/data-controller.ts';
+
+        // Initial rendering of all products
         renderProducts(products);
 
-        // Bind click events using .addEventListener to the navigation links. Upon clicking:
+        // Bind click events to navigation links
+        document.getElementById('electronics').addEventListener('click', () => {
+          const electronicsProducts = getByCategory('Electronics');
+          renderProducts(electronicsProducts);
+        });
 
-        // - "Electronics" should display all products categorized as "Electronics."
-        // - "Clothing" should display all products categorized as "Clothing."
-        // - "Groceries" should display all products categorized as "Groceries."
-        // - "Best Seller" should display all products with a rating greater than 4.5.
+        document.getElementById('clothing').addEventListener('click', () => {
+          const clothingProducts = getByCategory('Clothing');
+          renderProducts(clothingProducts);
+        });
 
-        
-        // your code
+        document.getElementById('groceries').addEventListener('click', () => {
+          const groceriesProducts = getByCategory('Groceries');
+          renderProducts(groceriesProducts);
+        });
+
+        document.getElementById('bestSeller').addEventListener('click', () => {
+          const bestSellerProducts = getByRating(4.5);
+          renderProducts(bestSellerProducts);
+        });
       </script>
     </main>
     <footer>
       <p>© 2024 My Online Store. All rights reserved.</p>
     </footer>
   </div>
+
 </body>
 
 </html>
